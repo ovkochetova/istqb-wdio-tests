@@ -9,12 +9,21 @@ class MainPage {
         return AboutUsDropDown;
     }
 
+    get searchTheSite() {
+        const searchTheSite = $('#mod-search-searchword');
+        return searchTheSite;
+    }
+
     Open() {
         browser.url('https://www.istqb.org/');
     }
     
     AboutUsHover(){
         this.navBarAboutUs.moveTo({x: 5, y: 5});
+    }
+
+    AboutUsClick(){
+        this.navBarAboutUs.click();
     }
 
     AboutUsClick(){
