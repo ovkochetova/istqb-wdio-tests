@@ -2,6 +2,8 @@ const assert = require('assert')
 const mainPage = require ('../pageobjects/main.page.js');
 const aboutUsPage = require('../pageobjects/aboutus.page.js');
 const ISTQBWorldwidePage = require('../pageobjects/ISTQBWorldwide.page.js');
+const { sideBarFindExamProvider } = require('../pageobjects/ISTQBWorldwide.page.js');
+
 
 
 
@@ -16,17 +18,14 @@ describe('ISTQB website some pages', () => {
         mainPage.Open();
         browser.maximizeWindow();
         mainPage.AboutUsHover();
-        browser.setTimeout({
-            'pageLoad': 10000,
-        });
+       
         expect(mainPage.navBarAboutUsDropDown).toHaveAttrContaining('class','mega');
     })
-
     
     it('AboutUs Page', ()=> {
         mainPage.AboutUsClick();
         
-        expect(aboutUsPage.VisionMissionPage).toBeEnabled()  
+        expect(aboutUsPage.VisionMissionPage).toExist()  
     })
 
     it('searchTheSite', ()=> {
@@ -37,9 +36,27 @@ describe('ISTQB website some pages', () => {
     })
 
     it('ISTQBWorldwide', ()=> {
-      ISTQBWorldwidePage.GeographicCoverageClick();
-      
+        ISTQBWorldwidePage.GeographicCoverageOpen();
+        ISTQBWorldwidePage.RSTQBContactHover();
+        /*ISTQBWorldwidePage.RSTQBContactOpen();*/
+
+        expect(ISTQBWorldwidePage.RSTQBContact).toHaveTextContaining(['Russian Software Testing Qualifications Board (RSTQB)', 'Andrey Konushin', 'andrey.konushin@rstqb.org', 'http://www.rstqb.org'])
+       
     })
 
+    it('findExamProvider', ()=> {
+        ISTQBWorldwidePage.FindExamProviderOpen();
+        sideBarFindExamProvider.inputCountry.setValue('Russia');
+        sideBarFindExamProvider.inputLanguage.setValue('Russian');
+        sideBarFindExamProvider.inputExam.setValue('Core Foundation Certified Tester 2018');
+        sideBarFindExamProvider.inputExamProvider.setValue('All');
+
+
+    })
     
+
+
 })
+
+
+
