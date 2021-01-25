@@ -2,7 +2,7 @@ const assert = require('assert')
 const mainPage = require ('../pageobjects/main.page.js');
 const aboutUsPage = require('../pageobjects/aboutus.page.js');
 const ISTQBWorldwidePage = require('../pageobjects/ISTQBWorldwide.page.js');
-const { sideBarFindExamProvider } = require('../pageobjects/ISTQBWorldwide.page.js');
+const findExamProviderPage  = require('../pageobjects/findexamprovider.page.js');
 
 
 
@@ -11,6 +11,7 @@ describe('ISTQB website some pages', () => {
 
     it('should have the right title', () => {
         mainPage.Open();
+        
         expect(browser).toHaveTitle('Certifying Software Testers Worldwide - ISTQB® International Software Testing Qualifications Board');
     })
 
@@ -35,22 +36,25 @@ describe('ISTQB website some pages', () => {
         browser.keys("Enter");
     })
 
-    it('ISTQBWorldwide', ()=> {
+    it('ISTQBWorldwidePage', ()=> {
+        ISTQBWorldwidePage.ISTQBWorldwidePageOpen();
         ISTQBWorldwidePage.GeographicCoverageOpen();
         ISTQBWorldwidePage.RSTQBContactHover();
-        /*ISTQBWorldwidePage.RSTQBContactOpen();*/
+        ISTQBWorldwidePage.RSTQBContactOpen();
 
-        expect(ISTQBWorldwidePage.RSTQBContact).toHaveTextContaining(['Russian Software Testing Qualifications Board (RSTQB)', 'Andrey Konushin', 'andrey.konushin@rstqb.org', 'http://www.rstqb.org'])
-       
+        expect(ISTQBWorldwidePage.RSTQBFullContact).toHaveText('Russian Software Testing Qualifications Board (RSTQB)');
     })
 
-    it('findExamProvider', ()=> {
-        ISTQBWorldwidePage.FindExamProviderOpen();
-        sideBarFindExamProvider.inputCountry.setValue('Russia');
-        sideBarFindExamProvider.inputLanguage.setValue('Russian');
-        sideBarFindExamProvider.inputExam.setValue('Core Foundation Certified Tester 2018');
-        sideBarFindExamProvider.inputExamProvider.setValue('All');
+    it('findExamProviderPage', ()=> {
+        ISTQBWorldwidePage.ISTQBWorldwidePageOpen();
+        findExamProviderPage.FindExamProviderOpen();
+        findExamProviderPage.inputCountry.setValue('Russia');
+        findExamProviderPage.inputLanguage.setValue('Russian');
+        findExamProviderPage.inputExam.setValue('Core Foundation Certified Tester 2018');
+        findExamProviderPage.inputExamProvider.setValue('All');
+        findExamProviderPage.btnSearchClick();
 
+        expect(ISTQBWorldwidePage.sideBarFindExamProvider).toHaveAttrContaining('id', 'ResultSearch');
 
     })
     

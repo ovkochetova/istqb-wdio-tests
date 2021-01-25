@@ -1,66 +1,43 @@
 class ISTQBWorldwidePage {
     get navBarISTQBWorldwide(){
-        const ISTQBWorldwide = $('[href="/istqb-where-you-are.html"]');
+        const ISTQBWorldwide = $('[href="/istqb-where-you-are.html"][class*="toggle"]');
         return ISTQBWorldwide;
     }
    
     get sideBarGeographicCoverage(){
-        const GeographicCoverage = $ ('[class="item-355"] a');
+        const GeographicCoverage = $('[class="item-355"] a');
         return GeographicCoverage;
     }
-
-    get sideBarFindExamProvider(){
-        const FindExamProvider = $ ('//a[text()="Find an Exam Provider"]');
-        return FindExamProvider;
-    }
-        
-    
-    get RSTQBContact(){
-        const RSTQB = $ ('[aria-label^="RUSSIAN FEDERATION"]');
+         
+    get RSTQBMapContact(){
+        const RSTQB = $('[aria-label^="RUSSIAN FEDERATION"]');
         return RSTQB;
     }
 
-    get inputCountry(){
-        const inputCountry = $ ('[id="ddlCountry"]+[class]');
-        return inputCountry;
+    get RSTQBFullContact(){
+        const RSTQBFullContact= $('[class*="ammapDescriptionText"] p');
+        return RSTQBFullContact;
     }
-
-    get inputlanguage(){
-        const inputlanguage = $ ('[id="ddlLanguages"]+[class]');
-        return inputlanguage;
+    
+    ISTQBWorldwidePageOpen(){
+        this.navBarISTQBWorldwide.click();
     }
-
-    get inputExam(){
-        const inputExam = $ ('[id="ddlExams"]+[class]');
-        return inputExam;
-    }
-
-    get inputExamProvider(){
-        const inputExamProvider = $ ('[id="ddlEPName"]+[class]');
-        return inputExamProvider;
-    }
-
-    get btnSearch(){
-        const btnSearch = $ ('id="btnSearch"');
-        return btnSearch;
-    }
-
 
     GeographicCoverageOpen(){
         this.sideBarGeographicCoverage.click();
     }
 
     RSTQBContactHover(){
-        this.RSTQBContact.moveTo({x: 5, y: 5});
+        this.RSTQBMapContact.moveTo({x: 5, y: 5});
     }
 
     RSTQBContactOpen(){
-        this.RSTQBContact.click();
+        this.RSTQBMapContact.click();
     }
 
-    FindExamProviderOpen(){
-        this.sideBarFindExamProvider.click();
-    }
+    
+    
+  
     
 }
 

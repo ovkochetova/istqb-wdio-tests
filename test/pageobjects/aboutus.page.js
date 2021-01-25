@@ -6,7 +6,7 @@ class AboutUsPage {
     }
 
     get VisionMissionPage(){
-        const VisionMissionPage = $ ('[data-id="128"]>[href="/about-us/vision-mission.html"]');
+        const VisionMissionPage = $('[data-id="128"]>[href="/about-us/vision-mission.html"]');
     return VisionMissionPage;
     }
     
