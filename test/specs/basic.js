@@ -4,9 +4,6 @@ const aboutUsPage = require('../pageobjects/aboutus.page.js');
 const ISTQBWorldwidePage = require('../pageobjects/ISTQBWorldwide.page.js');
 const findExamProviderPage  = require('../pageobjects/findexamprovider.page.js');
 
-
-
-
 describe('ISTQB website some pages', () => {
 
     it('should have the right title', () => {
@@ -48,13 +45,14 @@ describe('ISTQB website some pages', () => {
     it('findExamProviderPage', ()=> {
         ISTQBWorldwidePage.ISTQBWorldwidePageOpen();
         findExamProviderPage.FindExamProviderOpen();
-        findExamProviderPage.inputCountry.setValue('Russia');
-        findExamProviderPage.inputLanguage.setValue('Russian');
-        findExamProviderPage.inputExam.setValue('Core Foundation Certified Tester 2018');
-        findExamProviderPage.inputExamProvider.setValue('All');
+        findExamProviderPage.inputCountry.addValue('Russia');
+        findExamProviderPage.inputLanguage.addValue('Russian');
+        findExamProviderPage.inputExam.addValue('Core Foundation Certified Tester 2018');
+        findExamProviderPage.inputExamProvider.addValue('All');
+        browser.keys("Enter");
         findExamProviderPage.btnSearchClick();
 
-        expect(ISTQBWorldwidePage.sideBarFindExamProvider).toHaveAttrContaining('id', 'ResultSearch');
+        expect(findExamProviderPage.resultTable).toBeVisible();
 
     })
     

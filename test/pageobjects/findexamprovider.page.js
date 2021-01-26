@@ -6,39 +6,45 @@ class findExamProviderPage {
     }
 
     get inputCountry(){
-        const inputCountry = $('[id="ddlCountry"]+[class]');
+        const inputCountry = $('#ddlCountry+input');
         return inputCountry;
     }
 
-    get inputlanguage(){
-        const inputlanguage = $('[id="ddlLanguages"]+[class]');
+    get inputLanguage(){
+        const inputlanguage = $('#ddlLanguages+input');
         return inputlanguage;
     }
 
     get inputExam(){
-        const inputExam = $('[id="ddlExams"]+[class]');
+        const inputExam = $('#ddlExams+input');
         return inputExam;
     }
 
     get inputExamProvider(){
-        const inputExamProvider = $('[id="ddlEPName"]+[class]');
+        const inputExamProvider = $('#ddlEPName+input');
         return inputExamProvider;
     }
 
     get btnSearch(){
-        const btnSearch = $('id="btnSearch"');
+        const btnSearch = $('#btnSearch');
         return btnSearch;
     }
-    
 
+    get resultTable(){
+      const resultTable = $('#ResultSearch');
+      return resultTable;
+    }
+ 
+   
     btnSearchClick() {
-        this.btnSearch.click();
+      this.btnSearch.moveTo(5,5);
+      this.btnSearch.click();
     }
     
     FindExamProviderOpen(){
         this.sideBarFindExamProvider.click();
     }
-    
+
 }
 
 module.exports = new findExamProviderPage ()
