@@ -37,7 +37,7 @@ class findExamProviderPage {
  
    
     btnSearchClick() {
-      this.btnSearch.moveTo(5,5);
+      this.btnSearch.moveTo();
       this.btnSearch.click();
     }
     

@@ -45,10 +45,10 @@ describe('ISTQB website some pages', () => {
     it('findExamProviderPage', ()=> {
         ISTQBWorldwidePage.ISTQBWorldwidePageOpen();
         findExamProviderPage.FindExamProviderOpen();
-        findExamProviderPage.inputCountry.addValue('Russia');
-        findExamProviderPage.inputLanguage.addValue('Russian');
-        findExamProviderPage.inputExam.addValue('Core Foundation Certified Tester 2018');
-        findExamProviderPage.inputExamProvider.addValue('All');
+        findExamProviderPage.inputCountry.setValue('Russia');
+        findExamProviderPage.inputLanguage.setValue('Russian');
+        findExamProviderPage.inputExam.setValue('Core Foundation Certified Tester 2018');
+        findExamProviderPage.inputExamProvider.setValue('All');
         browser.keys("Enter");
         findExamProviderPage.btnSearchClick();
 
